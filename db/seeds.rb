@@ -1,4 +1,5 @@
-=begin
+
+# Seed da tabela Funcionario
 funcionarios_lista = [
     ["João", "cozinheiro", "joao@rest.com", "123"],
     ["Mario", "atendente", "mario@rest.com", "123"],
@@ -9,6 +10,7 @@ funcionarios_lista.each do |nome, cargo, email, senha|
     Funcionario.create( nome: nome, cargo: cargo, email: email, senha: senha )
 end
 
+# Seed da tabela Produto
 produtos_lista = [
     ["Macarrão", 20.99],
     ["Pizza", 30.99],
@@ -22,6 +24,7 @@ produtos_lista.each do |nome, preco, quantidade|
     Produto.create( nome: nome, preco: preco, quantidade: quantidade)
 end
 
+# Seed da tabela Pedido
 pedidos_lista = [
     [2, false, [2,1], [2,2]],
     [1, false, [3,1], [1,2]],
@@ -33,7 +36,7 @@ pedidos_lista = [
 
 pedidos_lista.each do |mesa, status, produtos, quantidades|
     Pedido.create( mesa: mesa, status: status, produtos: produtos, quantidades: quantidades)
-end"
-=end
+end
 
-TotalDium.create( total: 0.0)
+# Seed da tabela TotalDia
+#TotalDium.create( total: 0.0)
