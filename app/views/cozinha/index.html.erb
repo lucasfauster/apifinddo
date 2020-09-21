@@ -1,0 +1,43 @@
+<script>
+    function hideShow() {
+        div = document.getElementById("tabela-container");
+        if(div.style.display == "none"){
+            div.style.display = "block";
+        }else{
+            div.style.display = "none";
+        }
+    }
+</script>
+
+<h2>Painel da cozinha</h2>
+<button onclick="hideShow()">Mostrar pedidos</button>
+<div id="tabela-container" style="display: none">
+    <table style="text-align: center">
+        <thead>
+            <td>Mesa</td>
+            <td>Status</td>
+            <td>Produto-Id/Quantidade</td>
+            <td colspan="2"></td>
+        </thead>
+        <tbody>
+            <% @pedidos.each do |pedido|%>
+                <tr>
+                    <td><%= pedido.mesa%></td>
+                    <td>
+                    <% if pedido.status == false%>
+                        preparando
+                    <% else %>
+                        pronto
+                    <% end %>
+                    </td>
+                    <td>
+                    <% for i in 0...pedido.produtos.length()%>
+                        <%=pedido.produtos[i]%>/<%=pedido.quantidades[i]%> 
+                    <% end %>
+                    </td>
+                    <td><%= link_to "Editar Status", "pedidos/edit/#{pedido.id}" %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

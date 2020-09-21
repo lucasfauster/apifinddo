@@ -1,0 +1,40 @@
+<h2>Área do gerente</h2>
+<table style="text-align: center">
+    <thead>
+        <td>Mesa</td>
+        <td>Status</td>
+        <td>Produto-Id/Quantidade</td>
+        <td>Total</td>
+        <td colspan="2">
+    </thead>
+    <tbody>
+
+        <% @pedidos.each do |pedido|%>
+            <tr>
+                <td><%= pedido.mesa%></td>
+                <td>
+                    <% if pedido.status == false%>
+                        preparando
+                    <% else %>
+                        pronto
+                    <% end %>
+                </td>
+                <td>
+                    <% for i in 0...pedido.produtos.length()%>
+                        <%=pedido.produtos[i]%>/<%=pedido.quantidades[i]%> 
+                    <% end %>
+                </td>
+                <td>
+                    <%total = 0%>
+                    <% for i in 0...pedido.produtos.length()%>
+                        <%produto = @produtos.find(pedido.produtos[i])%>
+                        <%total += produto.preco * pedido.quantidades[i]%> 
+                    <% end %>
+                    <label type="text" name="pedido[valor]"><%=total%></label>
+                </td>
+                <td><%= link_to "Finalizar", "pedidos/finaliza/#{pedido.id}" %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table><br/>
+<h4>Total do dia: <%= @total_dia%></h4>

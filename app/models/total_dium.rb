@@ -1,0 +1,2 @@
+class TotalDium < ApplicationRecord
+end

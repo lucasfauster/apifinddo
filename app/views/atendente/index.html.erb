@@ -1,0 +1,27 @@
+<h2>Painel dos atendentes</h2>
+<table class="tabela" style="text-align: center">
+    <thead>
+        <td>Mesa</td>
+        <td>Status</td>
+        <td>Produto-Id/Quantidade</td>
+    </thead>
+    <tbody>
+        <% @pedidos.each do |pedido|%>
+            <tr>
+                <td><%= pedido.mesa%></td>
+                <td>
+                <% if pedido.status == false%>
+                    preparando
+                <% else %>
+                    pronto
+                <% end %>
+                </td>
+                <td>
+                <% for i in 0...pedido.produtos.length()%>
+                    <%=pedido.produtos[i]%>/<%=pedido.quantidades[i]%> 
+                <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

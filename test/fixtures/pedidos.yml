@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mesa: 1
+  status: false
+  produtos: 1
+  quantidades: 1
+
+two:
+  mesa: 1
+  status: false
+  produtos: 1
+  quantidades: 1
